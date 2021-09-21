@@ -11,7 +11,10 @@ your environment.  You will need to edit the file and place the correct ARNs in 
 ## API Gateway
 This is where things get interesting.  Instead of using a framework to write your code and then spinning up a web server to route traffic to and from it, AWS 
 has an API gateway service to send data between your code and your users.  You will need to create an REST API gateway that has a single resource (/).  
-Map GET to the queue_reader Lambda function and POST to queue_writer. Be sure to deploy your API after you have your routes in place./
+Map GET to the queue_reader Lambda function and POST to queue_writer. Be sure to deploy your API after you have your routes in place.
+
+![api_routes](images/api.png)
+
 # CORS
 If you plan to use the API with a web application (as we have in this demo) you will need to enable CORS in your API.  It is very straight forward.
 ## Serverless Web Hosting
