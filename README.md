@@ -17,6 +17,8 @@ Map GET to the queue_reader Lambda function and POST to queue_writer. Be sure to
 
 # CORS
 If you plan to use the API with a web application (as we have in this demo) you will need to enable CORS in your API.  It is very straight forward.
+![cors_part_1](images/cors1.png)
+![cors_part_2](images/cors2.png)
 ## Serverless Web Hosting
 An S3 bucket can be configured to provide static web hosting.  Since all of our code either runs on the browser or in Lambda, this is all well and good.  Upload
 index.html from the repo to a bucket you have created and enable web hosting.  Be sure to make the index file public.
