@@ -1,6 +1,6 @@
 # serverless_webapp_demo
 This is a proof of concept/demo of a serverless web app in AWS.  It doesn't do anything actually useful, but it does demonstrate using some of the services in AWS
-to buid a web app without needing to spin up a web server.
+to buid a web app without needing to spin up a web server.  I put together a little bit of code that writes to and reads from a SQS queue via the web.
 ## Lambda Functions
 Create two Lambda functions, one called queue_writer and another called queue_reader.  The queue_writer.py and queue_reader.py files included in this repo contain
 the needed code.  They're pretty small, but there is enough there for the demo.
@@ -22,3 +22,10 @@ If you plan to use the API with a web application (as we have in this demo) you 
 ## Serverless Web Hosting
 An S3 bucket can be configured to provide static web hosting.  Since all of our code either runs on the browser or in Lambda, this is all well and good.  Upload
 index.html from the repo to a bucket you have created and enable web hosting.  Be sure to make the index file public.
+![static_hosting](images/static_hosting.png)
+![public_settings](images/public_settings.png)
+![make_public_1](images/make_public_1.png)
+![make_public_2](images/make_public_2.png)
+
+## Conclusion
+Although this barely counts as an application, it is a useful demo of serverless technology on AWS. Thank you for your time.
