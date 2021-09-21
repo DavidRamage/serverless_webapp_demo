@@ -1,0 +1,42 @@
+
+  "Version": "2008-10-17",
+  "Id": "__default_policy_ID_2",
+  "Statement": [
+    {
+      "Sid": "__owner_statement",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::my_account_id:root"
+      },
+      "Action": "SQS:*",
+      "Resource": "arn:aws:sqs:us-west-2:my_account_id:example_application_queue"
+    },
+    {
+      "Sid": "__owner_statement",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::my_account_id:role/service-role/queue_reader-role"
+      },
+      "Action": [
+        "sqs:DeleteMessage",
+        "sqs:ReceiveMessage",
+        "sqs:GetQueueUrl"
+      ],
+      "Resource": "arn:aws:sqs:us-west-2:my_account_id:example_application_queue"
+    },
+    {
+      "Sid": "__owner_statement",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::my_account_id:role/service-role/queue_writer-role"
+      },
+      "Action": [
+        "sqs:SendMessage",
+        "sqs:GetQueueUrl",
+        "sqs:SetQueueAttributes",
+        "sqs:GetQueueAttributes"
+      ],
+      "Resource": "arn:aws:sqs:us-west-2:my_account_id:example_application_queue"
+    }
+  ]
+}

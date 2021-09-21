@@ -1,0 +1,62 @@
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src='https://requirejs.org/docs/release/2.3.5/minified/require.js'></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<script>
+$(document).ready(function() {
+	console.log("Jquery works!");
+	jQuery.support.cors = true;
+	$("#submissionform").submit(function(event) {
+		event.preventDefault();
+		var payload =  {'body' : $("#submissionform").serializeArray()[0].value };
+		console.log(payload);
+		var url = "https://22q1z67kl0.execute-api.us-west-2.amazonaws.com/Test";
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: JSON.stringify(payload),
+			contentType: 'application/json',
+			responseType: 'application/json',
+			success: function(data) {
+				$("#submitstatus").html("Succeessfully posted to API");
+				console.log("form submission success");
+			},
+			error: function(data) {
+				$("#submitstatus").html("Error posting to API.  Check console.");
+				console.log("form submission failure");
+			}
+		});
+	});
+
+	$("#queueread").on('click', (function() {
+		console.log("clicked the read button");
+		var url = "https://22q1z67kl0.execute-api.us-west-2.amazonaws.com/Test";
+		$.ajax({
+			type: "GET",
+			url: url,
+			success: function(data) {
+				$("#formout").html(data.body);
+			},
+			error: function() {
+				$("#formout").html("Could not read from SQS Queue");
+			}
+		});
+	}));
+});
+</script>
+</head>
+<body>
+<h1>Welcome To The Serverless API Demo App</h1>
+<form id="submissionform">
+	<label for="value">Value to submit:</label></br>
+	<input type=text" name = "body"><br>
+	<input type="submit">
+</form>
+<br>
+<button id = "queueread">Read From Queue</button>
+<div id = "submitstatus"></div>
+<div id = "formout"></div>
+</body>
+</html>
+
