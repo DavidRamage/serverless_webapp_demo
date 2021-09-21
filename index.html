@@ -11,7 +11,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		var payload =  {'body' : $("#submissionform").serializeArray()[0].value };
 		console.log(payload);
-		var url = "https://22q1z67kl0.execute-api.us-west-2.amazonaws.com/Test";
+		var url = "https://your-api-here";
 		$.ajax({
 			type: "POST",
 			url: url,
@@ -31,7 +31,7 @@ $(document).ready(function() {
 
 	$("#queueread").on('click', (function() {
 		console.log("clicked the read button");
-		var url = "https://22q1z67kl0.execute-api.us-west-2.amazonaws.com/Test";
+		var url = "https://your-api-here";
 		$.ajax({
 			type: "GET",
 			url: url,
